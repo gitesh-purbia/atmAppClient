@@ -40,7 +40,7 @@
       <div class="form-group input-box"
         ng-class="{'has-error':transactionsForm.cardnumber.$touched && (transactionsForm.cardnumber.$invalid || transactionsForm.cardnumber.$prestine)}">
         <label class="control-label">Card Number:</label>
-        <input type="text" autofocus
+        <input type="number" autofocus
           name="cardnumber"
           class="form-control"
           ng-model="cardsCtrl.cardNumber"
