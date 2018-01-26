@@ -1,0 +1,25 @@
+<div class="container card-detail">
+  <form name="withdrawalForm" data-ng-if="!WithdrawCtrl.isTransactionComplete">
+    <div class="row">
+      <div class="form-group input-box" ng-class="{'has-error':withdrawalForm.withdrawalForm.$touched && (withdrawalForm.withdrawalForm.$invalid || withdrawalForm.withdrawalForm.$prestine)}">
+        <label class="control-label">Enter Amount to Withdraw:</label>
+        <input type="text" autofocus name="withdrawalForm" class="form-control"
+          ng-model="WithdrawCtrl.withdrawalAmount"
+          placeholder="Enter amount"
+          required>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary"
+        type="submit"
+        ng-click="WithdrawCtrl.withdrawMyAmount()"
+        ng-disabled="withdrawalForm.$invalid">Go</button>
+    </div>
+  </form>
+  <div data-ng-if="WithdrawCtrl.isTransactionComplete">
+    <a ui-sref="cards">Another Transaction ?</a>
+    <div>Your Transaction Successfull</div>
+    <div>You Withdraw: {{WithdrawCtrl.withdrawalAmount}}</div>
+    <div>Available Balance: {{WithdrawCtrl.transactionStatus.newAmount}}</div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container card-detail">
+  <h2>Enter Your Card Detail Here.</h2>
+  <form name="cardForm">
+    <div class="row">
+      <div class="form-group input-box"
+        ng-class="{'has-error':cardForm.cardnumber.$touched && (cardForm.cardnumber.$invalid || cardForm.cardnumber.$prestine)}">
+        <label class="control-label">Card Number:</label>
+        <input type="text" autofocus
+          name="cardnumber"
+          class="form-control"
+          ng-model="cardsCtrl.cardInfo.cardNumber"
+          placeholder="Enter Card Number"
+          required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group input-box"
+        ng-class="{'has-error':cardForm.pin.$touched && (cardForm.pin.$invalid || cardForm.pin.$prestine)}">
+        <label class="control-label">Pin Number:</label>
+        <input type="number" autofocus
+          name="pin"
+          class="form-control"
+          ng-model="cardsCtrl.cardInfo.pin"
+          placeholder="Enter Pin Number"
+          required>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary"
+        type="submit"
+        ng-click="cardsCtrl.validateCard()"
+        ng-disabled="cardForm.$invalid">Go</button>
+    </div>
+  </form>
+</div>
