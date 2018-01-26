@@ -2,7 +2,7 @@ export function CardsRoutes($stateProvider) {
   'ngInject';
   $stateProvider
     .state('cards', {
-      url: '/cards',
+      url: '/',
       templateUrl: 'app/cards/cards.html',
       controller: 'CardsController',
       controllerAs: 'cardsCtrl',

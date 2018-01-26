@@ -1,4 +1,4 @@
-import alertify from 'alertify.js';
+// import alertify from 'alertify.js';
 import _ from 'lodash';
 export class WithdrawController {
   constructor($http, $state, $log, AppConstants) {
@@ -11,6 +11,7 @@ export class WithdrawController {
     this.userInfo = {};
     this.isTransactionComplete = false;
     this.transactionStatus = '';
+    this.errorMessage = '';
     if (!this.state.params.obj || _.isEmpty(this.state.params.obj)) {
       this.state.go('cards');
     } else {
@@ -30,7 +31,7 @@ export class WithdrawController {
       this.transactionStatus = res.data;
       this.isTransactionComplete = true;
     }, err => {
-      alertify.error(err.message);
+      this.errorMessage = err.data.message;
     });
   }
 }

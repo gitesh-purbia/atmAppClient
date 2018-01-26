@@ -25,19 +25,18 @@ export class CardsController {
     }
     if (this.cardInfo.cardNumber !== '' && this.cardInfo.pin !== '') {
       this.http.post(`${this.AppConstants.API_URL}cards/getCardInfo`, this.cardInfo).then(res => {
-        this.log.debug(res.data);
         if (_.isEmpty(res.data)) {
-          alertify.error('You have enter wrong card number or pin.');
           this.cardInfo = {
             cardNumber: '',
             pin: ''
           };
+          alertify.error('You have enter wrong card number or pin.');
         } else {
           this.cardHolderInfo = res.data;
           this.state.go('withdraw', {obj: res.data});
         }
       }, err => {
-        alertify.error(err);
+        alertify.error(err.data.message);
       });
     }
   }

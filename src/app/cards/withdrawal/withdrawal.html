@@ -9,6 +9,9 @@
           required>
       </div>
     </div>
+    <span data-ng-if="WithdrawCtrl.errorMessage" style="color: red">
+      {{WithdrawCtrl.errorMessage}}
+    </span>
     <div class="row">
       <button class="btn btn-primary"
         type="submit"
