@@ -11,6 +11,8 @@ export class CardsController {
       cardNumber: '',
       pin: ''
     };
+    this.transactions = [];
+    this.cardNumber = '';
     this.cardHolderInfo = {};
   }
 
@@ -39,5 +41,13 @@ export class CardsController {
         alertify.error(err.data.message);
       });
     }
+  }
+
+  getTransactions() {
+    this.http.get(`${this.AppConstants.API_URL}transactions/getTransactionsByCard/${this.cardNumber}`).then(res => {
+      this.transactions = res.data;
+    }, err => {
+      alertify.error(err.data.message);
+    });
   }
 }

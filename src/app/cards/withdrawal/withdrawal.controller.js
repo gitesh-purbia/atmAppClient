@@ -7,7 +7,7 @@ export class WithdrawController {
     this.state = $state;
     this.log = $log;
     this.AppConstants = AppConstants;
-    this.withdrawalAmount = 0;
+    this.withdrawalAmount = '';
     this.userInfo = {};
     this.isTransactionComplete = false;
     this.transactionStatus = '';

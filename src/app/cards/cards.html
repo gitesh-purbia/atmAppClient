@@ -27,9 +27,48 @@
     </div>
     <div class="row">
       <button class="btn btn-primary"
-        type="submit"
+        type="button"
         ng-click="cardsCtrl.validateCard()"
         ng-disabled="cardForm.$invalid">Go</button>
     </div>
   </form>
+</div>
+<div class="container card-detail">
+  <h3>Get Transactions</h3>
+  <form name="transactionsForm">
+    <div class="row">
+      <div class="form-group input-box"
+        ng-class="{'has-error':transactionsForm.cardnumber.$touched && (transactionsForm.cardnumber.$invalid || transactionsForm.cardnumber.$prestine)}">
+        <label class="control-label">Card Number:</label>
+        <input type="text" autofocus
+          name="cardnumber"
+          class="form-control"
+          ng-model="cardsCtrl.cardNumber"
+          placeholder="Enter Card Number"
+          required>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary"
+        type="button"
+        ng-click="cardsCtrl.getTransactions()"
+        ng-disabled="transactionsForm.$invalid">Submit</button>
+    </div>
+  </form>
+  <table class="table" data-ng-if="cardsCtrl.transactions.length > 0">
+    <thead>
+      <tr>
+        <td>Date</td>
+        <td>Amount</td>
+        <td>Debit/Credit</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="transaction in cardsCtrl.transactions track by transaction._id">
+        <td>{{transaction.date | date}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.transactionType}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
